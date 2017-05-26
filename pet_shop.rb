@@ -5,3 +5,11 @@ end
 def total_cash(pet_shop)
   return pet_shop[:admin][:total_cash]
 end
+
+def add_or_remove_cash(shop,money)
+  shop[:admin][:total_cash] += money
+end
+
+def pets_sold(shop)
+  shop[:admin][:pets_sold]
+end
