@@ -46,9 +46,27 @@ def customer_pet_count(customers)
 end
 
 def add_pet_to_customer(customer, new_pet)
-  customer[:pets] << new_pet
+  if new_pet = true
+    customer[:pets] << new_pet
+  else
+    return 0
+  end
 end
 
 def customer_can_afford_pet(customer, new_pet)
   customer[:cash] > new_pet[:price]
+end
+
+def sell_pet_to_customer(pet_shop, pet, customer)
+  add_pet_to_customer(customer, pet)
+  pet_shop[:admin][:pets_sold] += 1
+   #the above only works for the  __pet_found test but not the __pet_not_found
+   #it will always return 1 instead of 0
+  
+  #pet_shop[:admin][:total_cash] += pet_shop[:pets][pet][:price]
+   # calling fuction total_cash will not accept += method.
+   #but calling the whole thing like above will not work with the test because it calls total_cash which always returns 1000
+   #Also, the above syntax gives me error "no implicit conversion of hash into Integer"
+   #was tested in irb (.class), both are integers
+   #also doesn't work if I store it in a variable and/or call .to_i
 end
